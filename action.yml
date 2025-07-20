@@ -213,6 +213,7 @@ runs:
         INPUT_TIMEOUT_MINUTES: ${{ inputs.timeout_minutes }}
         INPUT_CLAUDE_ENV: ${{ inputs.claude_env }}
         INPUT_FALLBACK_MODEL: ${{ inputs.fallback_model }}
+        INPUT_PERMISSION_PROMPT_TOOL: ${{ inputs.permission_prompt_tool }}
 
         # Model configuration
         ANTHROPIC_MODEL: ${{ inputs.model || inputs.anthropic_model }}
