@@ -22,6 +22,7 @@ export type ClaudeOptions = {
   fallbackModel?: string;
   timeoutMinutes?: string;
   model?: string;
+  permissionPromptTool?: string;
 };
 
 type PreparedConfig = {
@@ -97,6 +98,9 @@ export function prepareRunConfig(
   }
   if (options.model) {
     claudeArgs.push("--model", options.model);
+  }
+  if (options.permissionPromptTool) {
+    claudeArgs.push("--permission-prompt-tool", options.permissionPromptTool);
   }
   if (options.timeoutMinutes) {
     const timeoutMinutesNum = parseInt(options.timeoutMinutes, 10);

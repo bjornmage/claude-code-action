@@ -27,6 +27,7 @@ async function run() {
       claudeEnv: process.env.INPUT_CLAUDE_ENV,
       fallbackModel: process.env.INPUT_FALLBACK_MODEL,
       model: process.env.ANTHROPIC_MODEL,
+      permissionPromptTool: process.env.INPUT_PERMISSION_PROMPT_TOOL,
     });
   } catch (error) {
     core.setFailed(`Action failed with error: ${error}`);

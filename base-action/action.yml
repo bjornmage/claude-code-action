@@ -55,6 +55,10 @@ inputs:
     description: "Custom environment variables to pass to Claude Code execution (YAML multiline format)"
     required: false
     default: ""
+  permission_prompt_tool:
+    description: "MCP tool to use for permission prompts (enables auto-approval in CI/CD)"
+    required: false
+    default: ""
 
   # Action settings
   timeout_minutes:

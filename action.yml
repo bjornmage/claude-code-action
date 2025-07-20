@@ -64,6 +64,10 @@ inputs:
     description: "Claude Code settings as JSON string or path to settings JSON file"
     required: false
     default: ""
+  permission_prompt_tool:
+    description: "MCP tool to use for permission prompts (enables auto-approval in CI/CD)"
+    required: false
+    default: ""
 
   # Auth configuration
   anthropic_api_key:

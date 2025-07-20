@@ -72,6 +72,24 @@ export async function prepareMcpConfig(
       mcpServers: {},
     };
 
+    // Include auto-approve server if permission prompt tool is configured
+    const permissionPromptTool = process.env.INPUT_PERMISSION_PROMPT_TOOL;
+    const enableAutoApprove = permissionPromptTool === "mcp__auto-approve__approve_permission";
+    
+    if (enableAutoApprove) {
+      baseMcpConfig.mcpServers["auto-approve"] = {
+        command: "bun",
+        args: [
+          "run",
+          `${process.env.GITHUB_ACTION_PATH}/src/mcp/auto-approve/auto-approve-server.ts`,
+        ],
+        env: {
+          NODE_ENV: "production",
+        },
+      };
+      core.info("Auto-approve MCP server enabled for CI/CD permission automation");
+    }
+
     // Always include comment server for updating Claude comments
     baseMcpConfig.mcpServers.github_comment = {
       command: "bun",
